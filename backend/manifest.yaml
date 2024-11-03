@@ -43,7 +43,7 @@ metadata:
   namespace: expense
 spec:
   selector:
-  macthLabels:
+  matchLabels:
     app: backend
     tier: api
     project: expense
