@@ -5,38 +5,38 @@ metadata:
   namespace: expense
   labels:
     app: mysql
-    tier: db
+    tier: database
     project: expense
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: mysql
-      tier: db
+      tier: database
       project: expense
   template:
     metadata:
       labels:
         app: mysql
-        tier: db
+        tier: database
         project: expense
     spec:
       containers:
       - name: mysql
         image: joindevops/mysql:v1
-# ---
-# kind: Service
-# apiVersion: v1
-# metadata:
-#   name: mysql
-#   namespace: expense
-# spec:
-#   selector:
-#     app: mysql
-#     tier: db
-#     project: expense
-#   ports:
-#   - name: mysql-port
-#     protocol: TCP
-#     port: 3306 # service port
-#     targetPort: 3306 # container port
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql
+  namespace: expense
+spec:
+  selector:
+    app: mysql
+    tier: database
+    project: expense
+  ports:
+  - name: mysql-port
+    protocol: TCP
+    port: 3306 # service port
+    targetPort: 3306 # container port
